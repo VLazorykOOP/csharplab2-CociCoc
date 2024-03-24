@@ -6,7 +6,7 @@ namespace Lab2CSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Lab 2 CSharp");
+            Console.WriteLine("Вправа 1: Lab 2 CSharp");
 
             Console.WriteLine("Введіть розмірність масиву:");
             int size = int.Parse(Console.ReadLine());
@@ -58,6 +58,35 @@ namespace Lab2CSharp
                     }
                 }
             }
+
+            Console.WriteLine("\nВправа 2: Lab 2 CSharp");
+
+            Console.WriteLine("Введіть розмірність масиву (Вправа 2):");
+            int sizeExercise2 = int.Parse(Console.ReadLine());
+
+            // Одновимірний масив для Вправи 2
+            int[] arrayExercise2 = new int[sizeExercise2];
+            Console.WriteLine("Введіть елементи масиву для Вправи 2:");
+            for (int i = 0; i < sizeExercise2; i++)
+            {
+                Console.Write($"Елемент {i}: ");
+                arrayExercise2[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("Введіть число для порівняння (Вправа 2):");
+            double targetDifference = double.Parse(Console.ReadLine());
+
+            // Пошук кількості пар для Вправи 2
+            int countPairs = 0;
+            for (int i = 0; i < sizeExercise2 - 1; i++)
+            {
+                if (Math.Abs(arrayExercise2[i] - arrayExercise2[i + 1]) == targetDifference)
+                {
+                    countPairs++;
+                }
+            }
+
+            Console.WriteLine($"Кількість пар сусідніх елементів з різницею {targetDifference} (Вправа 2): {countPairs}");
         }
     }
 }
