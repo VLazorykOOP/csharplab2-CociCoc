@@ -87,6 +87,43 @@ namespace Lab2CSharp
             }
 
             Console.WriteLine($"Кількість пар сусідніх елементів з різницею {targetDifference} (Вправа 2): {countPairs}");
+
+            Console.WriteLine("\nВправа 3: Lab 2 CSharp");
+
+            Console.WriteLine("Введіть розмірність масиву для Вправи 3 (n):");
+            int n = int.Parse(Console.ReadLine());
+
+            // Створення та заповнення масиву для Вправи 3
+            int[,] arrayExercise3 = new int[n, n];
+            Console.WriteLine("Введіть елементи масиву для Вправи 3:");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write($"Елемент [{i},{j}]: ");
+                    arrayExercise3[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            // Підрахунок середнього арифметичного парних елементів нижче головної діагоналі
+            int sum = 0;
+            int count = 0;
+            for (int i = 1; i < n; i++) // Починаємо з 1, оскільки головна діагональ розташована на i = 0
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (arrayExercise3[i, j] % 2 == 0) // Перевірка на парність
+                    {
+                        sum += arrayExercise3[i, j];
+                        count++;
+                    }
+                }
+            }
+
+            // Обчислення середнього арифметичного
+            double average = count > 0 ? (double)sum / count : 0;
+
+            Console.WriteLine($"Середнє арифметичне парних елементів нижче головної діагоналі: {average}");
         }
     }
 }
