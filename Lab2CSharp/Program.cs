@@ -112,7 +112,7 @@ namespace Lab2CSharp
             {
                 for (int j = 0; j < i; j++)
                 {
-                    if (arrayExercise3[i, j] % 2 == 0) // Перевірка на парність
+                    if (arrayExercise3[i, j] % 2 == 0) // Перевірка на  парність
                     {
                         sum += arrayExercise3[i, j];
                         count++;
@@ -124,6 +124,50 @@ namespace Lab2CSharp
             double average = count > 0 ? (double)sum / count : 0;
 
             Console.WriteLine($"Середнє арифметичне парних елементів нижче головної діагоналі: {average}");
+
+            Console.WriteLine("\nВправа 4: Lab 2 CSharp");
+
+            Console.WriteLine("Введіть кількість рядків (n):");
+            int rowCount = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Введіть кількість стовпців (m):");
+            int columnCount = int.Parse(Console.ReadLine());
+
+            // Створення східчастого масиву
+            int[][] jaggedArray = new int[rowCount][];
+            for (int i = 0; i < rowCount; i++)
+            {
+                jaggedArray[i] = new int[columnCount];
+                Console.WriteLine($"Введіть елементи {i + 1}-го рядка:");
+                for (int j = 0; j < columnCount; j++)
+                {
+                    Console.Write($"Елемент {j + 1}: ");
+                    jaggedArray[i][j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            // Знаходження мінімального елемента в кожному стовпці та запис у новий масив
+            int[] minColumnElements = new int[columnCount];
+            for (int j = 0; j < columnCount; j++)
+            {
+                int minValue = jaggedArray[0][j];
+                for (int i = 1; i < rowCount; i++)
+                {
+                    if (jaggedArray[i][j] < min)
+                    {
+                        min = jaggedArray[i][j];
+                    }
+                }
+                minColumnElements[j] = min;
+            }
+
+            // Виведення мінімальних елементів кожного стовпця
+            Console.WriteLine("\nМінімальні елементи в кожному стовпці:");
+            for (int j = 0; j < columnCount; j++)
+            {
+                Console.WriteLine($"Стовпець {j + 1}: {minColumnElements[j]}");
+            }
         }
     }
 }
+
